@@ -1,0 +1,590 @@
+<html>
+	<head>
+		<title>Hiwin grippers configurator</title>
+	</head>
+	<body>
+	<h1>XEG grippers</h1>
+		<form name="xegform">
+			<table  class="tab_config">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Model</th>
+						<th>Controller</th>
+						<th>Actuator cable</th>
+						<th>I/O cable length</th>
+						<th>RS485 communication</th>
+						<th>Controller setting kit</th>
+						<th>Note</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>
+						<input type="radio" id="xeg" onchange="changeXEGCode()" name="type" value="0" checked="true"/>
+						<label for="xeg">XEG</label><br>
+					</td>
+					<td>
+						<input type="radio" id="xeg16" onchange="changeXEGCode()" name="model" value="1"/>
+						<label for="xeg16">16</label><br>
+					</td>
+					<td>
+						<input type="radio" id="c1" onchange="changeXEGCode()" name="controller" value="6"/>
+						<label for="c1">C1</label><br>
+					</td>
+					<td>
+						<input type="radio" id="ac10" onchange="changeXEGCode()" name="ac_cable" value="8" checked="true"/>
+						<label for="ac10">10</label><br>
+					</td>
+					<td>
+						<input type="radio" id="ioL1" onchange="changeXEGCode()" name="io_cable" value="14" checked="true"/>
+						<label for="ioL1">1</label><br>
+					</td>
+					<td>
+						<input type="radio" id="rs485NO" onchange="changeXEGCode()" name="rs485" value="17" checked="true"/>
+						<label for="rs485NO">NO</label><br>
+					</td>
+					<td>
+						<input type="radio" id="contrsetNO" onchange="changeXEGCode()" name="controller_set" value="23"/>
+						<label for="contrsetNO">NO</label><br>
+					</td>
+					<td>
+						<input type="radio" id="noteNO" onchange="changeXEGCode()" name="note" value="25" checked="true"/>
+						<label for="noteNO">NO</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="xeg32" onchange="changeXEGCode()" name="model" value="2" checked="true"/>
+						<label for="xeg32">32</label><br>
+					</td>
+					<td>
+						<input type="radio" id="c2" onchange="changeXEGCode()" name="controller" value="7" checked="true"/>
+						<label for="c2">C2</label><br>
+					</td>
+					<td>
+						<input type="radio" id="ac1L" onchange="changeXEGCode()" name="ac_cable" value="9"/>
+						<label for="ac1L">1L</label><br>
+					</td>
+					<td>
+						<input type="radio" id="ioL3" onchange="changeXEGCode()" name="io_cable" value="15"/>
+						<label for="ioL3">3</label><br>
+					</td>
+					<td>
+						<input type="radio" id="rs485D5" onchange="changeXEGCode()" name="rs485" value="18"/>
+						<label for="rs485D5">D5</label><br>
+					</td>
+					<td>
+						<input type="radio" id="contrsetW2" onchange="changeXEGCode()" name="controller_set" value="24" checked="true"/>
+						<label for="contrsetW2">W2</label><br>
+					</td>
+					<td>
+						<input type="radio" id="noteS" onchange="changeXEGCode()" name="note" value="26"/>
+						<label for="noteS">S</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="xeg48" onchange="changeXEGCode()" name="model" value="3"/>
+						<label for="xeg48">48</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="ac30" onchange="changeXEGCode()" name="ac_cable" value="10"/>
+						<label for="ac30">30</label><br>
+					</td>
+					<td>
+						<input type="radio" id="ioL5" onchange="changeXEGCode()" name="io_cable" value="16"/>
+						<label for="ioL5">5</label><br>
+					</td>
+					<td>
+						<input type="radio" id="rs48550" onchange="changeXEGCode()" name="rs485" value="19"/>
+						<label for="rs48550">50</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="noteSC" onchange="changeXEGCode()" name="note" value="27"/>
+						<label for="noteSC">SC</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="xeg64" onchange="changeXEGCode()" name="model" value="4"/>
+						<label for="xeg64">64</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="ac3L" onchange="changeXEGCode()" name="ac_cable" value="11"/>
+						<label for="ac3L">3L</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="rs485HW" onchange="changeXEGCode()" name="rs485" value="20"/>
+						<label for="rs485HW">HW</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="xeg32pr" onchange="changeXEGCode()" name="model" value="5"/>
+						<label for="xeg32pr">32PR</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="ac50" onchange="changeXEGCode()" name="ac_cable" value="12"/>
+						<label for="ac50">50</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="rs485TM" onchange="changeXEGCode()" name="rs485" value="21"/>
+						<label for="rs485TM">TM</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="ac5L" onchange="changeXEGCode()" name="ac_cable" value="13"/>
+						<label for="ac5L">5L</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="rs485UR" onchange="changeXEGCode()" name="rs485" value="22"/>
+						<label for="rs485UR">UR</label><br>
+					</td>
+				</tr>
+			</table>
+			<br>
+			Gripper code: <b><label id="codelabelxeg">XEG-32-C2101-NO-W2-NO</label></b><br><br>
+			Description: <i><label id="descrlabelxeg">2-finger type, total stroke 32 mm, C2 controller (communication: I/O, Modbus RTU), 1.5M actuator cable length, 1.5M I/O cable length, no RS485 communication, software controller setting kit, no optional</label></i>
+		</form>
+		<script>
+			function changeXEGCode()
+			{		
+			// Label variables
+			var strType = 'XEG';
+			var strModel = '32';
+			var strController = 'C2';
+			var strActuatorC = '10';
+			var strIOC = '1';
+			var strRS485 = 'NO';
+			var strControllerS = 'W2';
+			var strNote = 'NO';
+			
+			// Description variables
+			var strTypeDescr = '2-finger type';
+			var strModelDescr = 'total stroke 32 mm';
+			var strControllerDescr = 'C2 controller (communication: I/O, Modbus RTU)';
+			var strActuatorCDescr = '1.5M actuator cable length';
+			var strIOCDescr = '1.5M I/O cable length';
+			var strRS485Descr = 'no RS485 communication';
+			var strControllerSDescr = 'software controller setting kit';
+			var strNoteDescr = 'no optional';
+			
+			// Gripper type
+			if(document.getElementById("xeg").checked==true)
+			{
+				strType = 'XEG';
+				strTypeDescr = '2-finger type';
+			}
+				
+			// Gripper model
+			if(document.getElementById("xeg16").checked==true)
+			{
+				strModel = '16';
+				strModelDescr = 'total stroke 16 mm';
+			}
+			if(document.getElementById("xeg32").checked==true)
+			{
+				strModel = '32';
+				strModelDescr = 'total stroke 32 mm';
+			}
+			if(document.getElementById("xeg48").checked==true)
+			{
+				strModel = '48';
+				strModelDescr = 'total stroke 48 mm';
+			}
+			if(document.getElementById("xeg64").checked==true)
+			{
+				strModel = '64';
+				strModelDescr = 'total stroke 64 mm';
+			}
+			if(document.getElementById("xeg32pr").checked==true)
+			{
+				strModel = '32PR';
+				strModelDescr = 'total stroke 32 mm (ISO Class 3, IP65)';
+			}
+				
+			// Controller
+			if(document.getElementById("c1").checked==true)
+			{
+				strController = 'C1';
+				strControllerDescr = 'C1 controller (communication: I/O, USB)';
+			}
+			if(document.getElementById("c2").checked==true)
+			{
+				strController = 'C2';
+				strControllerDescr = 'C2 controller (communication: I/O, Modbus RTU)'
+			}
+				
+			// Actuator cable
+			if(document.getElementById("ac10").checked==true)
+			{
+				strActuatorC = '10';
+				strActuatorCDescr = '1.5M actuator cable length';
+			}
+			if(document.getElementById("ac1L").checked==true)
+			{
+				strActuatorC = '1L';
+				strActuatorCDescr = '1.5M-Right Angle type connector on actuator cable';
+			}	
+			if(document.getElementById("ac30").checked==true)
+			{
+				strActuatorC = '30';
+				strActuatorCDescr = '3.0M actuator cable length';
+			}
+			if(document.getElementById("ac3L").checked==true)
+			{
+				strActuatorC = '3L';
+				strActuatorCDescr = '3.0M-Right Angle type connector on actuator cable';
+			}
+			if(document.getElementById("ac50").checked==true)
+			{
+				strActuatorC = '50';
+				strActuatorCDescr = '5.0M actuator cable length';
+			}
+			if(document.getElementById("ac5L").checked==true)
+			{
+				strActuatorC = '5L';
+				strActuatorCDescr = '5.0M-Right Angle type connector on actuator cable';
+			}
+				
+			// I/O cable length
+			if(document.getElementById("ioL1").checked==true)
+			{
+				strIOC = '1';
+				strIOCDescr = '1.5M I/O cable length';
+			}
+			if(document.getElementById("ioL3").checked==true)
+			{
+				strIOC = '3';
+				strIOCDescr = '3.0M I/O cable length';
+			}
+			if(document.getElementById("ioL5").checked==true)
+			{
+				strIOC = '5';
+				strIOCDescr = '5.0M I/O cable length';
+			}
+			
+			// RS485 communication
+			if(document.getElementById("rs485NO").checked==true)
+			{
+				strRS485 = 'NO';
+				strRS485Descr = 'no RS485 communication';
+			}
+			if(document.getElementById("rs485D5").checked==true)
+			{
+				strRS485 = 'D5';
+				strRS485Descr = '0.5M RJ45 to RJ45';
+			}
+			if(document.getElementById("rs48550").checked==true)
+			{
+				strRS485 = '50';
+				strRS485Descr = '5.0M RJ45 to RJ45';
+			}
+			if(document.getElementById("rs485HW").checked==true)
+			{
+				strRS485 = 'HW';
+				strRS485Descr = '1.5M RJ45 to DB9F';
+			}	
+			if(document.getElementById("rs485TM").checked==true)
+			{
+				strRS485 = 'TM';
+				strRS485Descr = 'TM Plug & Play Version, 1.5M RJ45 to DB9F (RS232)';
+			}
+			if(document.getElementById("rs485UR").checked==true)
+			{
+				strRS485 = 'UR';
+				strRS485Descr = 'UR+ Solutions, 1.5M RJ45 to USB';
+			}
+			
+			// Controller setting kit
+			if(document.getElementById("contrsetNO").checked==true)
+			{
+				strControllerS = 'NO';
+				strControllerSDescr = 'no software controller setting kit';
+			}
+			if(document.getElementById("contrsetW2").checked==true)
+			{
+				strControllerS = 'W2';
+				strControllerSDescr = 'software controller setting kit';
+			}
+			
+			// Note
+			if(document.getElementById("noteNO").checked==true)
+			{
+				strNote = 'NO';
+				strNoteDescr = 'no optional';
+			}
+			if(document.getElementById("noteS").checked==true)
+			{
+				strNote = 'S';
+				strNoteDescr = 'customized order';
+			}
+			if(document.getElementById("noteSC").checked==true)
+			{
+				strNote = 'SC';
+				strNoteDescr = 'serial communication by USB cable';
+			}
+			
+			// Creates the gripper model label
+			document.getElementById("codelabelxeg").innerHTML = strType + '-' + strModel + '-' + strController + strActuatorC + strIOC + '-' + strRS485 + '-' + strControllerS + '-' + strNote;
+			document.getElementById("descrlabelxeg").innerHTML = strTypeDescr + ', ' + strModelDescr + ', ' + strControllerDescr + ', ' + strActuatorCDescr + ', ' + strIOCDescr + ', ' + strRS485Descr + ', ' + strControllerSDescr + ', ' + strNoteDescr;
+			}
+		</script>
+		<h1>SEG/STG grippers</h1>
+		<form name="segform">
+			<table  class="tab_config">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Actuator cable</th>
+						<th>Sensor</th>
+						<th>Note</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>
+						<input type="radio" id="seg04" onchange="changeSEGCode()" name="type" value="0"/>
+						<label for="seg04">SEG-04</label><br>
+					</td>
+					<td>
+						<input type="radio" id="ac10s" onchange="changeSEGCode()" name="acct" value="1" checked="true"/>
+						<label for="ac10">10</label><br>
+					</td>
+					<td>
+						<input type="radio" id="sNone" onchange="changeSEGCode()" name="sensor" value="2" checked="true"/>
+						<label for="sNone">None</label><br>
+					</td>
+					<td>
+						<input type="radio" id="nNone" onchange="changeSEGCode()" name="note" value="3" checked="true"/>
+						<label for="nNone">None</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" id="seg24" onchange="changeSEGCode()" name="type" value="4"/ checked="true">
+						<label for="seg24">SEG-24</label><br>
+					</td>
+					<td>
+						<input type="radio" id="ac1Ls" onchange="changeSEGCode()" name="acct" value="5"/>
+						<label for="ac1L">1L</label><br>
+					</td>
+					<td>
+						<input type="radio" id="sO" onchange="changeSEGCode()" name="sensor" value="6"/>
+						<label for="sO">O</label><br>
+					</td>
+					<td>
+						<input type="radio" id="nP" onchange="changeSEGCode()" name="note" value="7"/>
+						<label for="nP">P</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" id="stg16" onchange="changeSEGCode()" name="type" value="8"/>
+						<label for="stg16">STG-16</label><br>
+					</td>
+					<td>
+						<input type="radio" id="ac30s" onchange="changeSEGCode()" name="acct" value="9"/>
+						<label for="ac30">30</label><br>
+					</td>
+					<td>
+						<input type="radio" id="sC" onchange="changeSEGCode()" name="sensor" value="10"/>
+						<label for="sC">C</label><br>
+					</td>
+					<td>
+						<input type="radio" id="nS" onchange="changeSEGCode()" name="note" value="11"/>
+						<label for="nS">S</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="ac3Ls" onchange="changeSEGCode()" name="acct" value="12"/>
+						<label for="ac3L">3L</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="nTM" onchange="changeSEGCode()" name="note" value="13"/>
+						<label for="nTM">TM</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="ac50s" onchange="changeSEGCode()" name="acct" value="14"/>
+						<label for="ac50">50</label><br>
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="nUR" onchange="changeSEGCode()" name="note" value="15"/>
+						<label for="nUR">UR</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<input type="radio" id="ac5Ls" onchange="changeSEGCode()" name="acct" value="16"/>
+						<label for="ac5L">5L</label><br>
+					</td>
+				</tr>
+			</table>
+			<br>
+			Gripper code: <b><label id="codelabelseg">SEG-24-10</label></b><br><br>
+			Description: <i><label id="descrlabelseg">total stroke 24 mm, 2-finger type, 1.0M straight connector, no sensor, NPN type</label></i>
+		</form>
+		<script>
+			function changeSEGCode()
+			{		
+			// Label variables
+			var strType = 'SEG-24';
+			var strActuatorC = '10';
+			var strSensor = '';
+			var strNote = '';
+			
+			// Description variables
+			var strTypeDescr = 'total stroke 24 mm, 2-finger type';
+			var strActuatorCDescr = '1.0M straight connector';
+			var strSensorDescr = 'no sensor';
+			var strNoteDescr = 'NPN type';
+			
+			// Gripper type
+			if(document.getElementById("seg04").checked==true)
+			{
+				strType = 'SEG-04';
+				strTypeDescr = 'total stroke 4 mm, 2-finger type';
+				document.getElementById("nP").disabled=true;
+				if(document.getElementById("nP").checked==true)
+					document.getElementById("nNone").checked=true;
+			}
+			if(document.getElementById("seg24").checked==true)
+			{
+				strType = 'SEG-24';
+				strTypeDescr = 'total stroke 24 mm, 2-finger type';
+				document.getElementById("nP").disabled=false;
+			}
+			if(document.getElementById("stg16").checked==true)
+			{
+				strType = 'STG-16';
+				strTypeDescr = 'total stroke 16 mm, 3-finger type';
+				document.getElementById("nP").disabled=false;
+			}
+				
+			// Actuator cable
+			if(document.getElementById("ac10s").checked==true)
+			{
+				strActuatorC = '10';
+				strActuatorCDescr = '1.0M straight connector';
+			}
+			if(document.getElementById("ac1Ls").checked==true)
+			{
+				strActuatorC = '1L';
+				strActuatorCDescr = '1.0M L type connector';
+			}	
+			if(document.getElementById("ac30s").checked==true)
+			{
+				strActuatorC = '30';
+				strActuatorCDescr = '3.0M straight connector';
+			}
+			if(document.getElementById("ac3Ls").checked==true)
+			{
+				strActuatorC = '3L';
+				strActuatorCDescr = '3.0M L type connector';
+			}
+			if(document.getElementById("ac50s").checked==true)
+			{
+				strActuatorC = '50';
+				strActuatorCDescr = '5.0M straight connector';
+			}
+			if(document.getElementById("ac5Ls").checked==true)
+			{
+				strActuatorC = '5L';
+				strActuatorCDescr = '5.0M L type connector';
+			}
+				
+			// Sensor
+			if(document.getElementById("sNone").checked==true)
+			{
+				strSensor = '';
+				strSensorDescr = 'no sensor';
+			}
+			if(document.getElementById("sO").checked==true)
+			{
+				strSensor = 'O';
+				strSensorDescr = '2.0M normally opened';
+			}
+			if(document.getElementById("sC").checked==true)
+			{
+				strSensor = 'C';
+				strSensorDescr = '2.0M normally closed';
+			}
+					
+			// Note
+			if(document.getElementById("nNone").checked==true)
+			{
+				strNote = '';
+				strNoteDescr = 'NPN type';
+			}
+			if(document.getElementById("nP").checked==true)
+			{
+				strNote = 'P';
+				strNoteDescr = 'PNP type';
+			}
+			if(document.getElementById("nS").checked==true)
+			{
+				strNote = 'S';
+				strNoteDescr = 'customized order';
+			}
+			if(document.getElementById("nTM").checked==true)
+			{
+				strNote = 'TM';
+				strNoteDescr = 'TM Plug & Play version';
+			}
+			if(document.getElementById("nUR").checked==true)
+			{
+				strNote = 'UR';
+				strNoteDescr = 'UR+ Solutions';
+			}
+			
+			// Creates the gripper model label
+			if(strSensor.localeCompare('') || strNote.localeCompare(''))
+				document.getElementById("codelabelseg").innerHTML = strType + '-' + strActuatorC + '-' + strSensor + strNote;
+			else
+				document.getElementById("codelabelseg").innerHTML = strType + '-' + strActuatorC;
+			document.getElementById("descrlabelseg").innerHTML = strTypeDescr + ', ' + strActuatorCDescr + ', ' + strSensorDescr + ', ' + strNoteDescr;
+			}
+		</script>
+	</body>
+</html>
