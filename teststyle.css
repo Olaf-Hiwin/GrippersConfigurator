@@ -1,0 +1,41 @@
+body {
+    background-color: black;
+}
+
+h1 {
+    background-color: rgb(0, 99, 44);
+    color: white;
+    margin-left: 20px;
+    font-weight: 600;
+    font-family: Montserrat;
+    font-size: 40px;
+}
+
+label {
+    color: white;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: bolder;
+    line-height: 1.73;
+}
+
+p {
+    color: white;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.73;
+}
+
+table {
+    border: 1px solid white;
+    border-color: white;
+    border-radius: 10px;
+    border-spacing: 15px;
+    color: white;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: left;
+    margin-left: 25;
+}
