@@ -1,0 +1,488 @@
+<html>
+    <head>
+        <title>Hiwin XEG grippers configurator</title>
+        <style>
+            textarea {
+                border: 1px solid black;
+                border-radius: 5px;
+                height: 25px;
+                resize: none;
+                width: 200px;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+            p {
+                font-family: Montserrat;
+            }
+            h3 {
+                font-family: Montserrat;
+            }
+            ul {
+                list-style-type: none;
+                margin-left: -35px;
+            }
+            li {
+                display: inline-block;
+                margin: -5px;
+            }
+            input[type="radio"]{
+                display: none;              /* Hides the standard radio buttons */
+            }
+            label {
+                border: 1px solid #000; 
+                padding: 5px;               /* Internal distance from the borders */
+                display: block;             /* Element on new line with whole width */
+                position: relative;         /* Location relative to normal position */
+                margin: 10px;               /* Space between two consecutive elements */
+                cursor: pointer;            /* Mouse cursor = hand with finger */
+                border-radius: 20px;
+                font-family: Montserrat;
+                text-align: center;
+                font-size: 14px;
+                font-weight: bold;
+            }
+            label:before {
+                background-color: rgb(119, 185, 34);
+                color: white;
+                content: " ";
+                display: block;
+                border-radius: 50%;
+                border: 1px solid #009944;
+                position: absolute;
+                top: -5px;
+                left: -5px;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                line-height: 28px;
+                transition-duration: 0.4s;  /* Duration of check-uncheck transitions */
+                transform: scale(0);        /* Scale change in check-uncheck transitions */
+            }
+            label img {
+                width: 100px;
+                transition-duration: 0.2s;
+                transform-origin: 50% 50%;
+            }
+            label:hover {
+                background-color: lightgrey;
+                color: black;
+            }
+            label:active {
+                background-color: #009944;
+                color: black;
+            }
+            :checked + label {
+                background-color: rgb(119, 185, 34);
+            }
+            :disabled + label {
+                background-color: rgb(83, 83, 83);
+            }
+            :checked + label:before {
+                content: "✓";
+                background-color: #009944;
+                transform: scale(1);
+            }
+            :checked + label img {
+                transform: scale(0.9);
+                z-index: -1;
+            }
+            .tooltip {
+                position: relative;
+                display: inline-block;
+            }
+            .tooltip .tooltiptext {
+                visibility: hidden;
+                width: 120px;
+                background-color: #009944;
+                color: #fff;
+                text-align: center;
+                padding: 5px 0;
+                border-radius: 6px;
+                position: absolute;
+                z-index: 1;
+                font-weight: lighter;
+                font-size: 12px;
+                padding: 5px;
+            }
+            .tooltip:hover .tooltiptext {
+                visibility: visible;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Gripper code: <textarea readonly id="codelabel" class="sercode">XEG-32-C2101-NO-W2-NO</textarea></p>
+        <h3>Series</h3>
+        <ul>
+            <li><input type="radio" name="series" id="xeg" onclick="ChangeSelection()" checked/>
+              <label for="xeg">
+                <div class="tooltip">
+                    <span class="tooltiptext">2-jaws electric grippers</span>
+                    XEG<br>
+                    <img src="assets/XEG.png" /><br>
+                    Series
+                </div>
+                </label>
+            </li>
+        </ul>
+        <h3>Model</h3>
+        <ul>
+            <li><input type="radio" name="model" id="xeg16" onclick="ChangeSelection()"/>
+              <label for="xeg16">
+                <div class="tooltip">
+                    <span class="tooltiptext">Stroke: 16 mm</span>
+                    16<br>
+                    <img src="assets/XEG-16.png" /><br>
+                    Stroke (mm)
+                </div>
+                </label>
+            </li>
+            <li><input type="radio" name="model" id="xeg32" onclick="ChangeSelection()" checked/>
+              <label for="xeg32">
+                <div class="tooltip">
+                    <span class="tooltiptext">Stroke: 32 mm</span>
+                    32<br>
+                    <img src="assets/XEG-32.png" /><br>
+                    Stroke (mm)
+                </div>
+            </label>
+            </li>
+            <li><input type="radio" name="model" id="xeg48" onclick="ChangeSelection()"/>
+              <label for="xeg48">
+                <div class="tooltip">
+                    <span class="tooltiptext">Stroke: 48 mm</span>
+                    48<br>
+                    <img src="assets/XEG-48.png" /><br>
+                    Stroke (mm)
+                </div>
+              </label>
+            </li>
+            <li><input type="radio" name="model" id="xeg64" onclick="ChangeSelection()"/>
+              <label for="xeg64">
+                <div class="tooltip">
+                    <span class="tooltiptext">Stroke: 64 mm</span>
+                    64<br>
+                    <img src="assets/XEG-64.png" /><br>
+                    Stroke (mm)
+                </div>
+              </label>
+            </li>
+            <li><input type="radio" name="model" id="xeg32pr" onclick="ChangeSelection()"/>
+                <label for="xeg32pr">
+                    <div class="tooltip">
+                        <span class="tooltiptext">Stroke: 32 mm, IP65</span>
+                        32PR<br>
+                        <img src="assets/XEG-32PR.png" /><br>
+                        Stroke (mm)
+                    </div>
+                </label>
+              </li>
+          </ul>
+        <h3>Controller</h3>
+        <ul>
+            <li><input type="radio" name="contr" id="xegc1" onclick="ChangeSelection()"/>
+              <label for="xegc1">
+                <div class="tooltip">
+                    <span class="tooltiptext">Old controller version</span>
+                    C1<br>
+                    <img src="assets/C1.png" /><br>
+                    Controller
+                </div>
+                </label>
+            </li>
+            <li><input type="radio" name="contr" id="xegc2" onclick="ChangeSelection()" checked/>
+                <label for="xegc2">
+                  <div class="tooltip">
+                    <span class="tooltiptext">New controller version</span>
+                      C2<br>
+                      <img src="assets/C2.png" /><br>
+                      Controller
+                  </div>
+                  </label>
+              </li>
+        </ul>
+        <h3>Actuator cable</h3>
+        <ul>
+            <li><input type="radio" name="act" id="act10" onclick="ChangeSelection()" checked/>
+              <label for="act10">
+                <div class="tooltip">
+                    <span class="tooltiptext">1.5 m-long actuator cable, straight/straight connectors</span>
+                    1.5 m<br>
+                    <img src="assets/10.png" /><br>
+                    Straight
+                </div>
+                </label>
+            </li>
+            <li><input type="radio" name="act" id="act1l" onclick="ChangeSelection()"/>
+                <label for="act1l">
+                  <div class="tooltip">
+                    <span class="tooltiptext">1.5 m-long actuator cable, straight/right-angle connectors</span>
+                      1.5 m<br>
+                      <img src="assets/1L.png" /><br>
+                      Right-angle
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="act" id="act30" onclick="ChangeSelection()"/>
+                <label for="act30">
+                  <div class="tooltip">
+                    <span class="tooltiptext">3 m-long actuator cable, straight/straight connectors</span>
+                      3 m<br>
+                      <img src="assets/30.png" /><br>
+                      Straight
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="act" id="act3l" onclick="ChangeSelection()"/>
+                  <label for="act3l">
+                    <div class="tooltip">
+                        <span class="tooltiptext">3 m-long actuator cable, straight/right-angle connectors</span>
+                        3 m<br>
+                        <img src="assets/3L.png" /><br>
+                        Right-angle
+                    </div>
+                    </label>
+                </li>
+                <li><input type="radio" name="act" id="act50" onclick="ChangeSelection()"/>
+                    <label for="act50">
+                      <div class="tooltip">
+                        <span class="tooltiptext">5 m-long actuator cable, straight/straight connectors</span>
+                          5 m<br>
+                          <img src="assets/50.png" /><br>
+                          Straight
+                      </div>
+                      </label>
+                  </li>
+                  <li><input type="radio" name="act" id="act5l" onclick="ChangeSelection()"/>
+                      <label for="act5l">
+                        <div class="tooltip">
+                            <span class="tooltiptext">5 m-long actuator cable, straight/right-angle connectors</span>
+                            5 m<br>
+                            <img src="assets/5L.png" /><br>
+                            Right-angle
+                        </div>
+                        </label>
+                    </li>
+        </ul>
+        <h3>I/O cable</h3>
+        <ul>
+            <li><input type="radio" name="io" id="io1" onclick="ChangeSelection()" checked/>
+              <label for="io1">
+                <div class="tooltip">
+                    <span class="tooltiptext">1.5 m-long I/O cable</span>
+                    1.5 m<br>
+                    <img src="assets/1.png" /><br>
+                    Length
+                </div>
+                </label>
+            </li>
+            <li><input type="radio" name="io" id="io3" onclick="ChangeSelection()"/>
+                <label for="io3">
+                  <div class="tooltip">
+                    <span class="tooltiptext">3 m-long I/O cable</span>
+                      3 m<br>
+                      <img src="assets/3.png" /><br>
+                      Length
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="io" id="io5" onclick="ChangeSelection()"/>
+                <label for="io5">
+                  <div class="tooltip">
+                    <span class="tooltiptext">5 m-long I/O cable</span>
+                      5 m<br>
+                      <img src="assets/5.png" /><br>
+                      Length
+                  </div>
+                  </label>
+              </li>
+        </ul>
+        <h3>RS485 communication</h3>
+        <ul>
+            <li><input type="radio" name="rs" id="rsno" onclick="ChangeSelection()" checked/>
+              <label for="rsno">
+                <div class="tooltip">
+                    <span class="tooltiptext">No RS485 communication</span>
+                    NO<br>
+                    <img src="assets/NO.png" /><br>
+                    No RS485
+                </div>
+                </label>
+            </li>
+            <li><input type="radio" name="rs" id="rsd5" onclick="ChangeSelection()"/>
+                <label for="rsd5">
+                  <div class="tooltip">
+                    <span class="tooltiptext">0.5 m-long RJ45/RJ45 RS485 cable</span>
+                      D5 (0.5 m)<br>
+                      <img src="assets/D5.png" /><br>
+                      RJ45-RJ45
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="rs" id="rs50" onclick="ChangeSelection()"/>
+                <label for="rs50">
+                  <div class="tooltip">
+                    <span class="tooltiptext">5 m-long RJ45/RJ45 RS485 cable</span>
+                      50 (5 m)<br>
+                      <img src="assets/RS50.png" /><br>
+                      RJ45-RJ45
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="rs" id="rshw" onclick="ChangeSelection()"/>
+                <label for="rshw">
+                  <div class="tooltip">
+                    <span class="tooltiptext">1.5 m-long RJ45/DB9F RS485 cable</span>
+                      HW (1.5 m)<br>
+                      <img src="assets/HW.png" /><br>
+                      RJ45-DB9F
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="rs" id="rstm" onclick="ChangeSelection()"/>
+                  <label for="rstm">
+                    <div class="tooltip">
+                        <span class="tooltiptext">1.5 m-long RJ45/DB9F RS485 cable for TM robots</span>
+                        TM (1.5 m)<br>
+                        <img src="assets/TM.png" /><br>
+                        RJ45-DB9F
+                    </div>
+                    </label>
+                </li>
+                <li><input type="radio" name="rs" id="rsur" onclick="ChangeSelection()"/>
+                  <label for="rsur">
+                    <div class="tooltip">
+                        <span class="tooltiptext">1.5 m-long RJ45/USB RS485 cable for UR+ robots</span>
+                        UR (1.5 m)<br>
+                        <img src="assets/UR.png" /><br>
+                        RJ45-USB
+                    </div>
+                    </label>
+                </li>
+        </ul>
+        <h3>Controller setting kit</h3>
+        <ul>
+            <li><input type="radio" name="kit" id="kitno" onclick="ChangeSelection()"/>
+                <label for="kitno">
+                  <div class="tooltip">
+                    <span class="tooltiptext">No software controller setting kit</span>
+                      NO<br>
+                      <img src="assets/NO.png" /><br>
+                      No SW kit
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="kit" id="kitw2" onclick="ChangeSelection()" checked/>
+                <label for="kitw2">
+                  <div class="tooltip">
+                    <span class="tooltiptext">W2 software controller setting kit</span>
+                      W2<br>
+                      <img src="assets/W2.png" /><br>
+                      W2 SW kit
+                  </div>
+                  </label>
+              </li>
+        </ul>
+        <h3>Note</h3>
+        <ul>
+            <li><input type="radio" name="note" id="noteno" onclick="ChangeSelection()" checked/>
+                <label for="noteno">
+                  <div class="tooltip">
+                    <span class="tooltiptext">No optional</span>
+                      NO<br>
+                      <img src="assets/NO.png" /><br>
+                      No optional
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="note" id="notes" onclick="ChangeSelection()"/>
+                <label for="notes">
+                  <div class="tooltip">
+                    <span class="tooltiptext">Customized order</span>
+                      S<br>
+                      <img src="assets/S.png" /><br>
+                      Customized
+                  </div>
+                  </label>
+              </li>
+              <li><input type="radio" name="note" id="notesc" onclick="ChangeSelection()"/>
+                <label for="notesc">
+                  <div class="tooltip">
+                    <span class="tooltiptext">Serial communication by USB cable</span>
+                      SC<br>
+                      <img src="assets/SC.png" /><br>
+                      USB comm
+                  </div>
+                  </label>
+              </li>
+        </ul>
+        <script>
+            /********************************************************/
+            /* XEG GRIPPERS CONFIGURATOR: JAVASCRIPT IMPLEMENTATION */
+            /********************************************************/
+
+            // Click on controls and update product code
+            function ChangeSelection(){
+                var s_ser, s_mod, s_contr, s_act, s_io, s_rs, s_kit, s_note;
+
+                if(document.getElementById("xeg").checked==true)
+                    s_ser = "XEG";
+                if(document.getElementById("xeg16").checked==true)
+                    s_mod = "16";
+                if(document.getElementById("xeg32").checked==true)
+                    s_mod = "32";
+                if(document.getElementById("xeg48").checked==true)
+                    s_mod = "48";
+                if(document.getElementById("xeg64").checked==true)
+                    s_mod = "64";
+                if(document.getElementById("xeg32pr").checked==true)
+                    s_mod = "32PR";
+                if(document.getElementById("xegc1").checked==true)
+                    s_contr = "C1";
+                if(document.getElementById("xegc2").checked==true)
+                    s_contr = "C2";
+                if(document.getElementById("act10").checked==true)
+                    s_act = "10";
+                if(document.getElementById("act1l").checked==true)
+                    s_act = "1L";
+                 if(document.getElementById("act30").checked==true)
+                    s_act = "30";
+                if(document.getElementById("act3l").checked==true)
+                    s_act = "3L";
+                if(document.getElementById("act50").checked==true)
+                    s_act = "50";
+                if(document.getElementById("act5l").checked==true)
+                    s_act = "5L";
+                if(document.getElementById("io1").checked==true)
+                    s_io = "1";
+                if(document.getElementById("io3").checked==true)
+                    s_io = "3";
+                if(document.getElementById("io5").checked==true)
+                    s_io = "5";
+                if(document.getElementById("rsno").checked==true)
+                    s_rs = "NO";
+                if(document.getElementById("rsd5").checked==true)
+                    s_rs = "D5";
+                if(document.getElementById("rs50").checked==true)
+                    s_rs = "50";
+                if(document.getElementById("rshw").checked==true)
+                    s_rs = "HW";
+                if(document.getElementById("rstm").checked==true)
+                    s_rs = "TM";
+                if(document.getElementById("rsur").checked==true)
+                    s_rs = "UR";
+                if(document.getElementById("kitno").checked==true)
+                    s_kit = "NO";
+                if(document.getElementById("kitw2").checked==true)
+                    s_kit = "W2";
+                if(document.getElementById("noteno").checked==true)
+                    s_note = "NO";
+                if(document.getElementById("notes").checked==true)
+                    s_note = "S";
+                if(document.getElementById("notesc").checked==true)
+                    s_note = "SC";
+            
+                document.getElementById('codelabel').value = s_ser + "-" + s_mod + "-" + s_contr + s_act + s_io + "-" + s_rs + "-" + s_kit + "-" + s_note;
+                }
+        </script>
+    </body>
+</html>
