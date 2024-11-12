@@ -10,9 +10,11 @@ textarea {
 }
 p {
     font-family: Montserrat;
+    src: url("../Montserrat-Regular.ttf") format('truetype');
 }
 h3 {
     font-family: Montserrat;
+    src: url("../Montserrat-Regular.ttf") format('truetype');
 }
 ul {
     list-style-type: none;
@@ -34,6 +36,7 @@ label {
     cursor: pointer;            /* Mouse cursor = hand with finger */
     border-radius: 20px;
     font-family: Montserrat;
+    src: url("../Montserrat-Regular.ttf") format('truetype');
     text-align: center;
     font-size: 14px;
     font-weight: bold;
@@ -121,6 +124,7 @@ label:active {
     color: black;
     display: block;
     font-family: Montserrat;
+    src: url("../Montserrat-Regular.ttf") format('truetype');
     height: 20px;
     width: 55px;
 }
@@ -187,6 +191,7 @@ textarea:focus, input:focus{
 /* Combo Box */
 .combobox {
     font-family: Monteserrat;
+    src: url("../Montserrat-Regular.ttf") format('truetype');
     min-width: 150px;
     max-width: 350px;
     margin-left: 10px;
@@ -225,6 +230,7 @@ textarea:focus, input:focus{
     border-radius: 10px;
     color: white;
     font-family: Montserrat;
+    src: url("../Montserrat-Regular.ttf") format('truetype');
     height: 35px;
     margin-left: 10px;
     min-width: 60px;
