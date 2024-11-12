@@ -1,116 +1,14 @@
 <html>
     <head>
         <title>Hiwin XEG grippers configurator</title>
-        <style>
-            textarea {
-                border: 1px solid black;
-                border-radius: 5px;
-                height: 25px;
-                resize: none;
-                width: 200px;
-                vertical-align: middle;
-                margin-right: 5px;
-            }
-            p {
-                font-family: Montserrat;
-            }
-            h3 {
-                font-family: Montserrat;
-            }
-            ul {
-                list-style-type: none;
-                margin-left: -35px;
-            }
-            li {
-                display: inline-block;
-                margin: -5px;
-            }
-            input[type="radio"]{
-                display: none;              /* Hides the standard radio buttons */
-            }
-            label {
-                border: 1px solid #000; 
-                padding: 5px;               /* Internal distance from the borders */
-                display: block;             /* Element on new line with whole width */
-                position: relative;         /* Location relative to normal position */
-                margin: 10px;               /* Space between two consecutive elements */
-                cursor: pointer;            /* Mouse cursor = hand with finger */
-                border-radius: 20px;
-                font-family: Montserrat;
-                text-align: center;
-                font-size: 14px;
-                font-weight: bold;
-            }
-            label:before {
-                background-color: rgb(119, 185, 34);
-                color: white;
-                content: " ";
-                display: block;
-                border-radius: 50%;
-                border: 1px solid #009944;
-                position: absolute;
-                top: -5px;
-                left: -5px;
-                width: 25px;
-                height: 25px;
-                text-align: center;
-                line-height: 28px;
-                transition-duration: 0.4s;  /* Duration of check-uncheck transitions */
-                transform: scale(0);        /* Scale change in check-uncheck transitions */
-            }
-            label img {
-                width: 100px;
-                transition-duration: 0.2s;
-                transform-origin: 50% 50%;
-            }
-            label:hover {
-                background-color: lightgrey;
-                color: black;
-            }
-            label:active {
-                background-color: #009944;
-                color: black;
-            }
-            :checked + label {
-                background-color: rgb(119, 185, 34);
-            }
-            :disabled + label {
-                background-color: rgb(83, 83, 83);
-            }
-            :checked + label:before {
-                content: "✓";
-                background-color: #009944;
-                transform: scale(1);
-            }
-            :checked + label img {
-                transform: scale(0.9);
-                z-index: -1;
-            }
-            .tooltip {
-                position: relative;
-                display: inline-block;
-            }
-            .tooltip .tooltiptext {
-                visibility: hidden;
-                width: 120px;
-                background-color: #009944;
-                color: #fff;
-                text-align: center;
-                padding: 5px 0;
-                border-radius: 6px;
-                position: absolute;
-                z-index: 1;
-                font-weight: lighter;
-                font-size: 12px;
-                padding: 5px;
-            }
-            .tooltip:hover .tooltiptext {
-                visibility: visible;
-            }
-        </style>
+        <link rel="stylesheet" href="./HiwinConfigurator.css">
+        <script src="./index.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
     </head>
     <body>
-        <p>Gripper code: <textarea readonly id="codelabel" class="sercode">XEG-32-C2101-NO-W2-NO</textarea></p>
+        <p>Gripper code: <textarea readonly id="codelabel" class="sercode">XEG-32-C2101-NO-W2-NO</textarea>
+            <button id="btnPDF" onclick="MakePdfFromTable('tbl',document.getElementById('codelabel').value)">Export PDF</button></p>
         <h3>Series</h3>
         <ul>
             <li><input type="radio" name="series" id="xeg" onclick="ChangeSelection()" checked/>
@@ -415,74 +313,52 @@
                   </label>
               </li>
         </ul>
-        <script>
-            /********************************************************/
-            /* XEG GRIPPERS CONFIGURATOR: JAVASCRIPT IMPLEMENTATION */
-            /********************************************************/
-
-            // Click on controls and update product code
-            function ChangeSelection(){
-                var s_ser, s_mod, s_contr, s_act, s_io, s_rs, s_kit, s_note;
-
-                if(document.getElementById("xeg").checked==true)
-                    s_ser = "XEG";
-                if(document.getElementById("xeg16").checked==true)
-                    s_mod = "16";
-                if(document.getElementById("xeg32").checked==true)
-                    s_mod = "32";
-                if(document.getElementById("xeg48").checked==true)
-                    s_mod = "48";
-                if(document.getElementById("xeg64").checked==true)
-                    s_mod = "64";
-                if(document.getElementById("xeg32pr").checked==true)
-                    s_mod = "32PR";
-                if(document.getElementById("xegc1").checked==true)
-                    s_contr = "C1";
-                if(document.getElementById("xegc2").checked==true)
-                    s_contr = "C2";
-                if(document.getElementById("act10").checked==true)
-                    s_act = "10";
-                if(document.getElementById("act1l").checked==true)
-                    s_act = "1L";
-                 if(document.getElementById("act30").checked==true)
-                    s_act = "30";
-                if(document.getElementById("act3l").checked==true)
-                    s_act = "3L";
-                if(document.getElementById("act50").checked==true)
-                    s_act = "50";
-                if(document.getElementById("act5l").checked==true)
-                    s_act = "5L";
-                if(document.getElementById("io1").checked==true)
-                    s_io = "1";
-                if(document.getElementById("io3").checked==true)
-                    s_io = "3";
-                if(document.getElementById("io5").checked==true)
-                    s_io = "5";
-                if(document.getElementById("rsno").checked==true)
-                    s_rs = "NO";
-                if(document.getElementById("rsd5").checked==true)
-                    s_rs = "D5";
-                if(document.getElementById("rs50").checked==true)
-                    s_rs = "50";
-                if(document.getElementById("rshw").checked==true)
-                    s_rs = "HW";
-                if(document.getElementById("rstm").checked==true)
-                    s_rs = "TM";
-                if(document.getElementById("rsur").checked==true)
-                    s_rs = "UR";
-                if(document.getElementById("kitno").checked==true)
-                    s_kit = "NO";
-                if(document.getElementById("kitw2").checked==true)
-                    s_kit = "W2";
-                if(document.getElementById("noteno").checked==true)
-                    s_note = "NO";
-                if(document.getElementById("notes").checked==true)
-                    s_note = "S";
-                if(document.getElementById("notesc").checked==true)
-                    s_note = "SC";
-            
-                document.getElementById('codelabel').value = s_ser + "-" + s_mod + "-" + s_contr + s_act + s_io + "-" + s_rs + "-" + s_kit + "-" + s_note;
-                }
-        </script>
+        <table id="tbl" hidden>
+            <tr>
+                <th>Option</th>
+                <th>Selection</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Series</td>
+                <td id="sel1">XEG</td>
+                <td id="des1">2-jaws electric grippers</td>
+            </tr>
+            <tr>
+                <td>Model</td>
+                <td id="sel2">32</td>
+                <td id="des2">Stroke: 32 mm</td>
+            </tr>
+            <tr>
+                <td>Controller</td>
+                <td id="sel3">C2</td>
+                <td id="des3">New controller version</td>
+            </tr>
+            <tr>
+                <td>Actuator cable</td>
+                <td id="sel4">10</td>
+                <td id="des4">1.5 m-long actuator cable, straight/straight connectors</td>
+            </tr>
+            <tr>
+                <td>I/O cable</td>
+                <td id="sel5">1</td>
+                <td id="des5">1.5 m-long I/O cable</td>
+            </tr>
+            <tr>
+                <td>RS485 communication</td>
+                <td id="sel6">NO</td>
+                <td id="des6">No RS485 communication</td>
+            </tr>
+            <tr>
+                <td>Controller setting kit</td>
+                <td id="sel7">W2</td>
+                <td id="des7">W2 software controller setting kit</td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td id="sel8">NO</td>
+                <td id="des8">No optional</td>
+            </tr>
+        </table>
     </body>
 </html>
